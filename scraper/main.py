@@ -76,9 +76,8 @@ def main():
     raw_articles = fetch_all(date_str)
 
     if not raw_articles:
-        print("\n⚠ 未抓取到任何文章，生成空 feed")
-        generate_feed([], date_str)
-        update_index(date_str, week_str)
+        print("\n⚠ 未抓取到任何文章，跳过更新（保留已有数据）")
+        print("   可能原因: RSS 源暂时不可达或目标日期无新文章")
         return
 
     # === 第二步：AI 处理 ===
