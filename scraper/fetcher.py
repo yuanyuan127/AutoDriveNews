@@ -5,6 +5,7 @@
 import hashlib
 import re
 import sys
+import time
 from datetime import datetime, timezone, timedelta
 from urllib.parse import urlparse
 
@@ -14,8 +15,12 @@ from bs4 import BeautifulSoup
 
 from sources import SOURCES, SEARCH_KEYWORDS
 
+# 使用常见的浏览器 UA，避免被反爬
 HEADERS = {
-    "User-Agent": "AutoDrive/1.0 (News Aggregator; +https://github.com/william-1225/autodrive)"
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
 }
 
 # 北京时间
@@ -38,12 +43,24 @@ def clean_html(html_text: str) -> str:
     return re.sub(r"<[^>]+>", "", html_text or "").strip()
 
 
-def extract_domain(url: str) -> str:
-    """提取域名"""
-    try:
-        return urlparse(url).netloc.replace("www.", "")
-    except Exception:
-        return ""
+def http_get(url: str, timeout: int = 20) -> requests.Response:
+    """带重试的 HTTP GET 请求"""
+    for attempt in range(3):
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=timeout)
+            resp.raise_for_status()
+            return resp
+        except requests.exceptions.Timeout:
+            if attempt < 2:
+                time.sleep(2)
+                continue
+            raise
+        except requests.exceptions.ConnectionError:
+            if attempt < 2:
+                time.sleep(3)
+                continue
+            raise
+    raise Exception(f"无法访问 {url}")
 
 
 def fetch_rss(source: dict, seen_urls: set) -> list:
@@ -54,16 +71,25 @@ def fetch_rss(source: dict, seen_urls: set) -> list:
         return articles
 
     try:
-        feed = feedparser.parse(rss_url)
-        if feed.bozo and not feed.entries:
-            print(f"  ⚠ {source['name']} RSS 解析失败: {feed.bozo_exception}")
+        # 先尝试直接请求 RSS 内容
+        resp = requests.get(rss_url, headers=HEADERS, timeout=30)
+        if resp.status_code != 200:
+            print(f"  ⚠ HTTP {resp.status_code}", end="")
             return articles
 
+        feed = feedparser.parse(resp.content)
+        if not feed.entries:
+            if feed.bozo:
+                print(f"  ⚠ 解析异常: {str(feed.bozo_exception)[:60]}", end="")
+            else:
+                print(f"  ⚠ 无条目", end="")
+            return articles
+
+        count = 0
         for entry in feed.entries:
             title = entry.get("title", "").strip()
             link = entry.get("link", "").strip()
             summary = clean_html(entry.get("summary", "") or entry.get("description", ""))
-            published = entry.get("published_parsed") or entry.get("updated_parsed")
 
             if not title or not link:
                 continue
@@ -72,6 +98,8 @@ def fetch_rss(source: dict, seen_urls: set) -> list:
             if not is_relevant(f"{title} {summary}"):
                 continue
 
+            # 解析发布时间
+            published = entry.get("published_parsed") or entry.get("updated_parsed")
             if published:
                 pub_dt = datetime(*published[:6], tzinfo=timezone.utc)
             else:
@@ -88,59 +116,16 @@ def fetch_rss(source: dict, seen_urls: set) -> list:
                 "fetched_from": "rss",
             })
             seen_urls.add(link)
+            count += 1
 
-    except Exception as e:
-        print(f"  ✗ {source['name']} RSS 抓取异常: {e}")
-
-    return articles
-
-
-def fetch_html(source: dict, seen_urls: set) -> list:
-    """从网页列表抓取文章（RSS 不可用时的降级方案）"""
-    articles = []
-    list_url = source.get("list_url", "")
-    if not list_url:
         return articles
 
-    try:
-        resp = requests.get(list_url, headers=HEADERS, timeout=15)
-        resp.raise_for_status()
-        soup = BeautifulSoup(resp.content, "html.parser")
-
-        # 通用链接提取策略
-        for a_tag in soup.find_all("a", href=True):
-            title = a_tag.get_text(strip=True)
-            link = a_tag["href"]
-            if not title or not link:
-                continue
-            if len(title) < 10 or len(title) > 200:
-                continue
-            if link in seen_urls:
-                continue
-            if not is_relevant(title):
-                continue
-
-            # 补全相对 URL
-            if link.startswith("//"):
-                link = "https:" + link
-            elif link.startswith("/"):
-                domain = urlparse(list_url).netloc
-                link = f"https://{domain}{link}"
-
-            articles.append({
-                "title": title[:200],
-                "url": link,
-                "source_name": source["name"],
-                "source_key": source["key"],
-                "summary_raw": "",
-                "publish_ts": int(datetime.now(timezone.utc).timestamp()),
-                "publish_date": datetime.now(TZ_BEIJING).strftime("%Y-%m-%d"),
-                "fetched_from": "html",
-            })
-            seen_urls.add(link)
-
+    except requests.exceptions.Timeout:
+        print(f"  ⚠ 超时", end="")
+    except requests.exceptions.ConnectionError:
+        print(f"  ⚠ 连接失败(可能被墙)", end="")
     except Exception as e:
-        print(f"  ✗ {source['name']} 网页抓取异常: {e}")
+        print(f"  ✗ {str(e)[:50]}", end="")
 
     return articles
 
@@ -149,7 +134,6 @@ def fetch_all(target_date: str = None) -> list:
     """
     从所有来源抓取文章
     target_date: YYYYMMDD 格式，默认抓取昨天
-    返回文章列表
     """
     if target_date is None:
         yesterday = datetime.now(TZ_BEIJING) - timedelta(days=1)
@@ -161,23 +145,29 @@ def fetch_all(target_date: str = None) -> list:
 
     all_articles = []
     seen_urls = set()
+    success_count = 0
 
     for source in SOURCES:
-        print(f"📡 {source['name']} ({source['type']}) ", end="")
-        if source["type"] == "rss" and source.get("rss"):
-            articles = fetch_rss(source, seen_urls)
-        else:
-            articles = fetch_html(source, seen_urls)
-
-        print(f"→ {len(articles)} 篇相关")
+        print(f"📡 {source['name']:6s} ", end="")
+        articles = fetch_rss(source, seen_urls)
+        print(f"→ {len(articles)} 篇")
         all_articles.extend(articles)
+        if articles:
+            success_count += 1
 
     # 只保留目标日期的文章
     date_articles = [a for a in all_articles if a["publish_date"] == target_date]
 
-    # 去重（按 URL）
-    print(f"\n📊 总计: 抓取 {len(all_articles)} 篇 → 目标日期 {target_date} 共 {len(date_articles)} 篇")
+    # 如果严格按日期筛选结果太少，放宽到最近 2 天
+    if len(date_articles) < 5:
+        yesterday = datetime.now(TZ_BEIJING) - timedelta(days=1)
+        yday_str = yesterday.strftime("%Y-%m-%d")
+        day_before = (yesterday - timedelta(days=1)).strftime("%Y-%m-%d")
+        date_articles = [a for a in all_articles
+                         if a["publish_date"] in (yday_str, day_before)]
 
+    print(f"\n📊 总计: {len(all_articles)} 篇 | {success_count}/{len(SOURCES)} 源成功 | "
+          f"最终 {len(date_articles)} 篇")
     return date_articles
 
 
