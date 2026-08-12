@@ -1,0 +1,43 @@
+name: 每日智驾资讯抓取
+
+on:
+  schedule:
+    # 北京时间每天早上 8:00 (UTC+8 = UTC+0 00:00)
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 需要写权限来提交数据
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 运行抓取管线
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python scraper/main.py
+
+      - name: 提交 & 推送更新
+        run: |
+          git config user.name "AutoDrive Bot"
+          git config user.email "bot@autodrive.news"
+          git add data/news/
+          git diff --staged --quiet || (
+            git commit -m "📰 每日更新: $(date +%Y%m%d)"
+            git push
+          )

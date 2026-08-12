@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智驾资讯 AutoDrive</title>
+<style>
+  :root { --bg:#f7fafc; --panel:#ffffff; --line:#e2e8f0; --fg:#1a202c; --mute:#718096;
+          --acc:#7c3aed; --acc-soft:#f5f3ff; --warn:#d97706; --card:#ffffff;
+          --side-bg:#0f172a; --side-line:#1e293b; --side-hover:#1e293b; --side-fg:#f8fafc;
+          --side-mute:#94a3b8; --side-active:#6d28d9; --side-active-fg:#ffffff; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:13px/1.55 -apple-system,Segoe UI,Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;height:100vh;overflow:hidden}
+  .app{display:flex;height:100vh;width:100vw;overflow:hidden}
+  .page{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+  .sidebar{width:216px;min-width:216px;background:var(--side-bg);border-right:1px solid var(--side-line);display:flex;flex-direction:column;flex-shrink:0}
+  .sidebar-logo{padding:24px 20px 20px;font-size:20px;font-weight:700;color:var(--side-fg);line-height:1.2;border-bottom:1px solid var(--side-line)}
+  .sidebar-logo .sub{display:block;font-size:11px;font-weight:400;color:var(--side-mute);margin-top:3px;letter-spacing:.5px}
+  .nav-group{padding:14px 12px 4px}
+  .nav-group-label{padding:4px 10px 8px;font-size:11px;letter-spacing:.6px;color:#5b6472;font-weight:600;text-transform:uppercase}
+  .nav-items{display:flex;flex-direction:column;gap:8px}
+  .nav-item{position:relative;display:flex;align-items:center;gap:10px;padding:10px 12px 10px 14px;cursor:pointer;color:var(--side-mute);font-size:14.5px;border-radius:8px;transition:all .12s}
+  .nav-item:hover{background:var(--side-hover);color:var(--side-fg)}
+  .nav-item.active{background:var(--side-active);color:var(--side-active-fg);font-weight:600}
+  .nav-item.active::before{content:"";position:absolute;left:6px;top:9px;bottom:9px;width:3px;border-radius:3px;background:var(--side-active-fg)}
+  .nav-item .ico{width:15px;height:15px;flex-shrink:0}
+  .side-foot{margin-top:auto;padding:16px 20px;border-top:1px solid var(--side-line);font-size:11px;color:var(--side-mute);line-height:1.7}
+  header{padding:22px 28px 14px;background:var(--bg);position:sticky;top:0;z-index:10}
+  .feedhead{padding:2px 0 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+  .feedhead h1{margin:0;font-size:24px;font-weight:700;color:var(--fg)}
+  .feedhead .sub{color:var(--mute);font-size:13px;margin-top:5px}
+  .body{padding:14px 28px 40px;flex:1;overflow-y:auto;min-height:0}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .stat .n{font-size:22px;font-weight:700;color:var(--fg)}
+  .stat .l{font-size:12px;color:var(--mute);margin-top:3px}
+
+  .timeline{position:relative;display:flex;flex-direction:column;gap:14px}
+  .timeline::before{content:"";position:absolute;left:83px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl-row{display:flex;gap:18px;align-items:flex-start;position:relative}
+  .tl-gutter{width:76px;flex-shrink:0;align-self:stretch;position:relative}
+  .tl-time{position:absolute;right:10px;top:22px;white-space:nowrap;color:#475467;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+  .tl-gutter .dot{position:absolute;left:78px;top:27px;width:11px;height:11px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 3px var(--bg)}
+  .card{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;transition:border-color .15s,box-shadow .15s}
+  .card:hover{border-color:#cbd5e1;box-shadow:0 2px 10px rgba(15,23,42,.05)}
+  .card-head{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+  .card .src{font-size:12.5px;color:var(--mute);flex:1;min-width:0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .card .src .dt{color:#94a3b8}
+  .card a.t{color:var(--fg);text-decoration:none;font-size:16px;font-weight:600;line-height:1.5;display:block}
+  .card a.t:hover{color:var(--acc)}
+  .card .sum{color:#475467;font-size:13px;line-height:1.7;margin-top:8px}
+  .card .thumb{display:block;width:min(300px,100%);aspect-ratio:16/9;border-radius:9px;overflow:hidden;margin-top:10px;background:#f1f5f9}
+  .card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .card .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;align-items:center}
+  .pill{display:inline-block;padding:3px 9px;border-radius:6px;font-size:12px;font-weight:500;background:#f1f5f9;color:#64748b;white-space:nowrap}
+  .pill.hardware{background:#fef3c7;color:#b45309}
+  .score{flex-shrink:0;min-width:34px;height:22px;border-radius:999px;background:var(--acc-soft);border:1px solid #c4b5fd;color:var(--acc);display:inline-flex;align-items:center;justify-content:center;padding:0 9px;font-weight:700;font-size:12px;line-height:1}
+  .feat{display:inline-flex;align-items:center;gap:4px;background:#fef3c7;color:#b45309;border:1px solid #fcd34d;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;line-height:1}
+  .head-right{flex-shrink:0;display:flex;align-items:center;gap:8px;margin-left:auto}
+  .reason{margin-top:13px;padding-top:13px;border-top:1px solid #eef1f5;font-size:13px;line-height:1.65}
+  .reason .rbox{background:var(--acc-soft);border:0;border-radius:8px;padding:9px 12px;color:#6d28d9;font-weight:500}
+  .empty{color:var(--mute);text-align:center;padding:60px 0}
+
+  .split{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .panel h2{margin:0 0 4px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .panel h2 .dot{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+  .panel .ptag{font-size:11.5px;color:var(--mute);margin-bottom:14px}
+  .panel .headline{font-size:15.5px;font-weight:600;line-height:1.5;margin:0 0 8px}
+  .panel .body-text{color:#475467;font-size:13px;line-height:1.75}
+
+  .insight-box{margin-top:16px;background:var(--acc-soft);border:1px solid #c4b5fd;border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.75;color:#4c1d95}
+  .insight-box b{color:#6d28d9}
+  .insight-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.4px;color:#6d28d9;background:#ddd6fe;border-radius:5px;padding:2px 7px;margin-bottom:8px}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+
+  .filterbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#eef3f7;border:1px solid #e2eaf1;border-radius:14px;padding:8px 10px;margin:0 0 16px}
+  .seg{display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap}
+  .pill-tab{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:10px;cursor:pointer;font-size:13px;color:var(--mute);background:transparent;border:1px solid transparent;transition:all .12s;user-select:none;white-space:nowrap}
+  .pill-tab:hover{color:var(--fg)}
+  .pill-tab.active{background:var(--card);color:var(--fg);border-color:#cbd5e1;font-weight:600;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .pill-tab .n{font-size:12px;color:var(--mute);font-weight:600}
+  .pill-tab.active .n{color:var(--acc)}
+  .fb-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:wrap}
+  select,button,input{font:inherit}
+  button{background:var(--card);color:var(--fg);border:1px solid var(--line);padding:7px 12px;border-radius:6px;cursor:pointer;font-size:13px}
+  button:hover{border-color:var(--acc)}
+  .search{flex:1;min-width:160px;max-width:300px;padding:7px 12px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+  .dd{position:relative;display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px 11px;cursor:pointer;font-size:13px;user-select:none;transition:border-color .12s}
+  .dd:hover{border-color:var(--acc)}
+  .dd.open{border-color:var(--acc);box-shadow:0 0 0 3px rgba(124,58,237,.08)}
+  .dd .dd-lbl{color:var(--mute);font-size:11px;letter-spacing:.2px}
+  .dd .dd-val{color:var(--fg);font-weight:500}
+  .dd .dd-arrow{color:var(--mute);font-size:10px;margin-left:2px;transition:transform .15s}
+  .dd.open .dd-arrow{transform:rotate(180deg);color:var(--acc)}
+  .dd .dd-pop{display:none;position:absolute;top:calc(100% + 6px);left:0;min-width:200px;max-width:320px;background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 28px rgba(15,23,42,.1);z-index:50;cursor:default}
+  .dd .dd-pop-inner{padding:6px;max-height:60vh;overflow-y:auto}
+  .dd.open .dd-pop{display:block}
+  .dd .opt{padding:7px 10px;border-radius:6px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:9px;line-height:1.3}
+  .dd .opt:hover{background:#fbfbfb}
+  .dd .opt.sel{color:var(--acc);font-weight:600}
+  .dd .opt.disabled{color:#c3cad4;cursor:not-allowed}
+  .dd .opt .check{width:14px;height:14px;border:1.5px solid #cbd5e1;border-radius:3px;background:#fff;flex-shrink:0;position:relative;transition:all .12s}
+  .dd .opt.sel>.check{background:var(--acc);border-color:var(--acc)}
+  .dd .opt.sel>.check::after{content:'';position:absolute;left:3.5px;top:0;width:5px;height:9px;border:solid #fff;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+  .dd .opt .nm{flex:1}
+  .dd .opt .cnt{color:var(--mute);font-size:12px;margin-left:auto;padding-left:8px}
+
+  .cal{width:232px;padding:2px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;padding:2px 2px 10px}
+  .cal-head .cal-title{font-size:13px;font-weight:700;color:var(--fg)}
+  .cal-head .cal-nav{cursor:pointer;color:var(--mute);font-size:14px;padding:3px 9px;border-radius:6px;user-select:none}
+  .cal-head .cal-nav:hover{background:#eef2f6;color:var(--fg)}
+  .cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:11px;color:var(--mute);margin-bottom:4px}
+  .cal-days{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:28px;gap:2px}
+  .cal-cell{display:flex;align-items:center;justify-content:center;height:28px;border-radius:8px;font-size:12.5px;color:var(--fg)}
+  .cal-cell.empty{visibility:hidden}
+  .cal-cell.disabled{color:#cbd5e1;cursor:not-allowed}
+  .cal-cell.avail{cursor:pointer}
+  .cal-cell.avail:hover{background:#eef2f6}
+  .cal-cell.sel{background:var(--acc);color:#fff;font-weight:700}
+
+  .doc-title{font-size:24px;font-weight:700;margin:0 0 6px}
+  .doc-sub{color:var(--mute);font-size:14px;margin-bottom:20px}
+  .doc-rules{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;max-width:900px}
+  .doc-rule{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:13.5px;line-height:1.85;color:#344054}
+  .doc-rule h3{font-size:14.5px;margin:0 0 8px;color:var(--fg);font-weight:700;display:flex;align-items:center;gap:7px}
+  .doc-rule h3 .dot{width:7px;height:7px;border-radius:50%}
+  .doc-rule.news h3 .dot{background:var(--acc)}
+
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#8f8f8f;border-radius:8px;border:2px solid transparent;background-clip:content-box}
+</style>
+</head>
+<body>
+<div class="app">
+<nav class="sidebar">
+  <div class="sidebar-logo">智驾资讯<span class="sub">AutoDrive</span></div>
+  <div class="nav-group">
+    <div class="nav-group-label">行业情报</div>
+    <div class="nav-items">
+      <div class="nav-item active" data-page="news"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>每日精选</div>
+      <div class="nav-item" data-page="all"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/></svg>全部动态</div>
+      <div class="nav-item" data-page="weekly"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>每周精选</div>
+      <div class="nav-item" data-page="insight"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.79.69-1.42 1.31-2A4.5 4.5 0 1 0 7.6 12c.62.58 1.13 1.21 1.31 2"/></svg>本周洞察</div>
+    </div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-label">通用</div>
+    <div class="nav-items">
+      <div class="nav-item" data-page="doc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>口径说明</div>
+    </div>
+  </div>
+  <div class="side-foot" id="sideFoot">加载中…</div>
+</nav>
+
+<div id="page-news" class="page">
+  <header><div class="feedhead"><div><h1>每日精选</h1><div class="sub" id="newsSub">自动挑选的高价值自动驾驶资讯</div></div></div></header>
+  <div class="body">
+    <div class="filterbar">
+      <div class="seg" id="catSeg-news"></div>
+      <div class="fb-right">
+        <div class="dd" id="ddDate-news"><span class="dd-lbl">日期</span><span class="dd-val" id="ddDateVal-news">-</span><span class="dd-arrow">▾</span><div class="dd-pop"><div class="dd-pop-inner" id="datePop-news"></div></div></div>
+        <div class="dd" id="ddSource-news"><span class="dd-lbl">来源</span><span class="dd-val" id="ddSourceVal-news">全部</span><span class="dd-arrow">▾</span><div class="dd-pop"><div class="dd-pop-inner" id="sourcePop-news"></div></div></div>
+        <input class="search" id="q-news" placeholder="搜索标题 / 摘要">
+        <button id="reset-news">重置</button>
+      </div>
+    </div>
+    <div class="timeline" id="list-news"></div>
+  </div>
+</div>
+
+<div id="page-all" class="page" style="display:none">
+  <header><div class="feedhead"><div><h1>全部动态</h1><div class="sub" id="allSub">当日全量抓取资讯</div></div></div></header>
+  <div class="body">
+    <div class="filterbar">
+      <div class="seg" id="catSeg-all"></div>
+      <div class="fb-right">
+        <div class="dd" id="ddDate-all"><span class="dd-lbl">日期</span><span class="dd-val" id="ddDateVal-all">-</span><span class="dd-arrow">▾</span><div class="dd-pop"><div class="dd-pop-inner" id="datePop-all"></div></div></div>
+        <div class="dd" id="ddSource-all"><span class="dd-lbl">来源</span><span class="dd-val" id="ddSourceVal-all">全部</span><span class="dd-arrow">▾</span><div class="dd-pop"><div class="dd-pop-inner" id="sourcePop-all"></div></div></div>
+        <input class="search" id="q-all" placeholder="搜索标题 / 摘要">
+        <button id="reset-all">重置</button>
+      </div>
+    </div>
+    <div class="timeline" id="list-all"></div>
+  </div>
+</div>
+
+<div id="page-weekly" class="page" style="display:none">
+  <header><div class="feedhead"><div><h1>每周精选</h1><div class="sub" id="weeklySub">一周内二次筛选的重点资讯</div></div></div></header>
+  <div class="body"><div class="timeline" id="weeklyList"></div></div>
+</div>
+
+<div id="page-insight" class="page" style="display:none">
+  <header><div class="feedhead"><div><h1>本周洞察</h1><div class="sub" id="insightSub">基于周精选和证据材料形成的专题分析</div></div></div></header>
+  <div class="body" id="insightList"></div>
+</div>
+
+<div id="page-doc" class="page" style="display:none">
+  <div class="body" style="padding-top:24px">
+    <div class="doc-title">口径说明</div>
+    <div class="doc-sub">智驾资讯 AutoDrive · 自动驾驶行业情报聚合平台</div>
+    <div class="doc-rules">
+      <div class="doc-rule news"><h3><span class="dot"></span>行业情报</h3>
+        <ul>
+          <li>数据源：澎湃新闻、36氪、新浪、搜狐汽车、今日头条、雷科技、亿欧、钛媒体、机器之心等公开资讯站点。</li>
+          <li>五维主题分类：政策 / 市场 / RoboX / 技术 / 硬件。</li>
+          <li>RoboX：Robotaxi、Robovan、无人配送等自动驾驶商业运营相关资讯。</li>
+          <li>硬件：英伟达芯片、激光雷达、域控制器、传感器等自动驾驶硬件相关资讯。</li>
+          <li>日更制：每日抓取昨日 00:00-24:00 新闻，规则打分 + AI 精选生成概要与 Insight。</li>
+        </ul>
+      </div>
+      <div class="doc-rule news"><h3><span class="dot"></span>技术覆盖范围</h3>
+        <ul>
+          <li>端到端模型：VLA（视觉-语言-动作）、VLM、世界模型等前沿自动驾驶架构。</li>
+          <li>感知技术：BEV、占用网络、3D 目标检测、多模态融合。</li>
+          <li>规划控制：模仿学习、强化学习、MPC 优化。</li>
+          <li>芯片与算力：NVIDIA Drive Thor/Orin、高通 Snapdragon Ride、Mobileye、地平线征程系列。</li>
+          <li>数据与仿真：自动标注、NeRF/Gaussian Splatting、闭环仿真。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+const CATS=["政策","市场","RoboX","技术","硬件"];
+const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDate=s=>s?`${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`:"-";
+const fmtDateShort=s=>s?`${s.slice(0,4)}-${+s.slice(4,6)}-${+s.slice(6,8)}`:"-";
+const trimSent=s=>{s=(s||"").trim();if(!s)return"";let i=-1;for(const ch of "。！？"){i=Math.max(i,s.lastIndexOf(ch));}return i>=0?s.slice(0,i+1):s;};
+function hhmm(it){if(it.has_time&&it.publish_ts){const d=new Date((it.publish_ts+8*3600)*1000);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');}return it.publish_date?it.publish_date.slice(5):"—";}
+
+function itemHtml(it,featuredMode){
+  const companies=(it.companies||[]).map(b=>`<span class="pill hardware">${esc(b)}</span>`).join("");
+  const take=(it.takeaway||"").trim();
+  const showInsight=featuredMode&&take;
+  const bodyText=featuredMode?(it.summary||""):trimSent((it.snippet||"").slice(0,200));
+  const showBody=bodyText&&bodyText!==it.title;
+  const showImg=it.image&&it.image_status==="ok";
+  return `<div class="tl-row"><div class="tl-gutter"><span class="tl-time">${esc(hhmm(it))}</span><span class="dot"></span></div><div class="card"><div class="card-head"><div class="src"><span>${esc(it.source_name||"")}</span>${it.publish_date?`<span class="dt">· ${it.publish_date}</span>`:""}</div><div class="head-right">${it.is_featured?`<span class="feat">精选</span>`:""}<span class="score">${it.importance||0}</span></div></div><a class="t" href="${it.url}" target="_blank" rel="noopener">${esc(it.title)}</a>${showBody?`<div class="sum">${esc(bodyText)}</div>`:""}${showImg?`<a class="thumb" href="${it.url}" target="_blank" rel="noopener"><img src="${it.image}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.thumb').remove()"></a>`:""}<div class="tags">${it.category?`<span class="pill">${esc(it.category)}</span>`:""}${companies}</div>${showInsight?`<div class="reason"><div class="rbox"><b>Insight:</b> ${esc(take)}</div></div>`:""}</div></div>`
+}
+
+function renderCalendar(popEl,availableDates,selectedDate,onPick){
+  const avail=new Set(availableDates);
+  const pad=n=>String(n).padStart(2,"0");
+  const base=selectedDate||availableDates[availableDates.length-1]||"";
+  let viewY=base?+base.slice(0,4):new Date().getFullYear();
+  let viewM=base?+base.slice(4,6):new Date().getMonth()+1;
+  // 前一天（今天不可选）
+  const yesterday=new Date();
+  yesterday.setDate(yesterday.getDate()-1);
+  const maxDateStr=`${yesterday.getFullYear()}${pad(yesterday.getMonth()+1)}${pad(yesterday.getDate())}`;
+  function draw(){
+    const first=new Date(viewY,viewM-1,1);
+    const startDow=(first.getDay()+6)%7;
+    const daysInMonth=new Date(viewY,viewM,0).getDate();
+    let cells="";
+    for(let i=0;i<startDow;i++)cells+=`<span class="cal-cell empty"></span>`;
+    for(let day=1;day<=daysInMonth;day++){
+      const ds=`${viewY}${pad(viewM)}${pad(day)}`;
+      const isAvail=avail.has(ds)&&ds<=maxDateStr;
+      const isSel=ds===selectedDate;
+      cells+=`<span class="cal-cell ${isAvail?"avail":"disabled"} ${isSel?"sel":""}" ${isAvail?`data-d="${ds}"`:""}>${day}</span>`;
+    }
+    popEl.innerHTML=`<div class="cal">
+      <div class="cal-head"><span class="cal-nav" data-nav="-1">‹</span><span class="cal-title">${viewY} 年 ${viewM} 月</span><span class="cal-nav" data-nav="1">›</span></div>
+      <div class="cal-weekdays"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+      <div class="cal-days">${cells}</div>
+    </div>`;
+    popEl.querySelector('[data-nav="-1"]').onclick=e=>{e.stopPropagation();viewM--;if(viewM<1){viewM=12;viewY--;}draw();};
+    popEl.querySelector('[data-nav="1"]').onclick=e=>{e.stopPropagation();viewM++;if(viewM>12){viewM=1;viewY++;}draw();};
+    popEl.querySelectorAll(".cal-cell.avail").forEach(c=>c.onclick=e=>{e.stopPropagation();onPick(c.dataset.d);});
+  }
+  draw();
+}
+
+function makeFeedView(suffix,featuredMode){
+  const state={index:null,feed:null,date:null,cat:"",sources:new Set(),q:""};
+  const el=id=>document.getElementById(id+"-"+suffix);
+  function closeDD(){document.querySelectorAll(".dd.open").forEach(d=>d.classList.remove("open"))}
+  [el("ddDate"),el("ddSource")].forEach(dd=>dd.addEventListener("click",e=>{if(e.target.closest(".dd-pop"))return;const open=dd.classList.contains("open");closeDD();if(!open)dd.classList.add("open")}));
+  function buildCatSeg(){if(!state.feed)return;const base=baseItems();const counts={};CATS.forEach(c=>counts[c]=0);base.forEach(i=>{if(counts[i.category]!=null)counts[i.category]++});let html=`<div class="pill-tab ${state.cat===""?"active":""}" data-c="">全部 <span class="n">${base.length}</span></div>`;CATS.forEach(c=>html+=`<div class="pill-tab ${state.cat===c?"active":""}" data-c="${c}">${c} <span class="n">${counts[c]||0}</span></div>`);el("catSeg").innerHTML=html;el("catSeg").querySelectorAll(".pill-tab").forEach(t=>t.onclick=()=>{state.cat=t.dataset.c;buildCatSeg();render()});}
+  function buildMulti(popEl,valEl,counts,set){popEl.innerHTML=Object.entries(counts).map(([k,v])=>`<div class="opt ${set.has(k)?"sel":""}" data-k="${esc(k)}"><span class="check"></span><span class="nm">${esc(k)}</span><span class="cnt">${v}</span></div>`).join("")||'<div class="opt" style="color:var(--mute);cursor:default">无</div>';popEl.querySelectorAll(".opt[data-k]").forEach(o=>o.onclick=()=>{const k=o.dataset.k;set.has(k)?set.delete(k):set.add(k);o.classList.toggle("sel");valEl.textContent=set.size?`${set.size} 项`:"全部";render()});}
+  function match(it){if(state.cat&&it.category!==state.cat)return false;if(state.sources.size&&!state.sources.has(it.source_name))return false;if(state.q&&!(`${it.title} ${it.summary||""}`.toLowerCase().includes(state.q.toLowerCase())))return false;return true}
+  function baseItems(){return featuredMode?state.feed.items.filter(i=>i.is_featured):state.feed.items}
+  function render(){if(!state.feed)return;const list=baseItems().filter(match);el("list").innerHTML=list.length?list.map(it=>itemHtml(it,featuredMode)).join(""):'<div class="empty">没有符合条件的内容</div>'}
+  el("q").oninput=e=>{state.q=e.target.value.trim();render()};
+  el("reset").onclick=()=>{state.cat="";state.sources.clear();state.q="";el("q").value="";el("ddSourceVal").textContent="全部";buildCatSeg();render()};
+  function buildCalendar(){renderCalendar(el("datePop"),state.index.dates||[],state.date,d=>{closeDD();loadFeed(d);});}
+  async function loadFeed(date){state.feed=await fetch(`./data/news/feed_${date}.json`).then(r=>r.json());state.date=date;state.cat="";state.sources.clear();state.q="";el("q").value="";el("ddDateVal").textContent=fmtDate(date);buildCatSeg();buildCalendar();buildMulti(el("sourcePop"),el("ddSourceVal"),state.feed.source_counts||{},state.sources);render();}
+  async function init(index){state.index=index;await loadFeed(index.latest);}
+  return {init};
+}
+const newsView=makeFeedView("news",true);
+const allView=makeFeedView("all",false);
+
+document.addEventListener("click",e=>{if(!e.target.closest(".dd"))document.querySelectorAll(".dd.open").forEach(d=>d.classList.remove("open"))});
+
+async function loadWeekly(index){const week=index?.latest_week;if(!week){document.getElementById("weeklyList").innerHTML='<div class="empty">暂无每周精选</div>';return}const data=await fetch(`./data/news/weekly_${week}.json`).then(r=>r.json());document.getElementById("weeklySub").textContent=`${week} · 二次筛选 ${data.selected_count||0} 条`;document.getElementById("weeklyList").innerHTML=(data.items||[]).length?data.items.map(it=>itemHtml(it,true)).join(""):'<div class="empty">暂无每周精选</div>'}
+async function loadInsight(index){const week=index?.latest_week;if(!week){document.getElementById("insightList").innerHTML='<div class="empty">暂无本周洞察</div>';return}const data=await fetch(`./data/news/insight_${week}.json`).then(r=>r.json());document.getElementById("insightSub").textContent=`${week} · ${data.topics?.length||0} 个专题`;document.getElementById("insightList").innerHTML=(data.topics||[]).map(t=>`<div class="panel" style="margin-bottom:14px"><h2><span class="dot"></span>${esc(t.title)}</h2><div class="body-text">${esc(t.summary)}</div><div class="body-text">${esc(t.why_it_matters||"")}</div></div>`).join("")||'<div class="empty">暂无本周洞察</div>'}
+
+async function boot(){
+  const index=await fetch("./data/news/index.json").then(r=>r.json());
+  await newsView.init(index);
+  await allView.init(index);
+  document.getElementById("newsSub").textContent=`${fmtDate(index.latest)} · 自动挑选的高价值自动驾驶资讯`;
+  document.getElementById("allSub").textContent=`${fmtDate(index.latest)} · 当日全量抓取资讯`;
+  window.__newsIndex=index;
+  document.getElementById("sideFoot").textContent=`更新于 ${fmtDateShort(index.latest)}`;
+}
+boot().catch(e=>{document.getElementById("sideFoot").textContent="加载失败："+e;console.error(e)});
+
+document.querySelectorAll('.nav-item').forEach(el=>{
+  el.addEventListener('click',async ()=>{
+    document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+    document.getElementById('page-'+el.dataset.page).style.display='flex';
+    if(el.dataset.page==='weekly')await loadWeekly(window.__newsIndex);
+    if(el.dataset.page==='insight')await loadInsight(window.__newsIndex);
+  });
+});
+</script>
+</body>
+</html>

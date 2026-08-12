@@ -1,0 +1,34 @@
+{
+  "source_counts": {"36氪": 2, "澎湃新闻": 1, "机器之心": 2, "钛媒体": 1},
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "自动驾驶行业周报：端到端模型成为主流技术路线",
+      "source_name": "机器之心",
+      "publish_date": "20260801",
+      "publish_ts": 1757300000,
+      "has_time": true,
+      "category": "技术",
+      "companies": ["行业观察"],
+      "importance": 85,
+      "is_featured": true,
+      "url": "https://www.jiqizhixin.com/articles/2026-08-01",
+      "summary": "本周多家车企和自动驾驶公司发布了端到端模型的最新进展，行业技术路线正在从模块化向端到端统一范式转变。",
+      "snippet": "端到端模型成为自动驾驶主流技术路线，多家车企宣布将在2026年内完成端到端架构切换。"
+    },
+    {
+      "title": "激光雷达产业链国产替代加速：禾赛科技拿下欧洲车企定点",
+      "source_name": "36氪",
+      "publish_date": "20260801",
+      "publish_ts": 1757290000,
+      "has_time": true,
+      "category": "硬件",
+      "companies": ["禾赛科技"],
+      "importance": 82,
+      "is_featured": true,
+      "url": "https://www.36kr.com/p/2890123456700",
+      "summary": "禾赛科技宣布获得某欧洲豪华品牌激光雷达定点，成为首个进入欧洲高端车企供应链的国产激光雷达厂商。",
+      "snippet": "禾赛科技获欧洲车企定点，国产激光雷达出海加速。"
+    }
+  ]
+}

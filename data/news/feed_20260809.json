@@ -1,0 +1,49 @@
+{
+  "source_counts": {"36氪": 3, "澎湃新闻": 2, "机器之心": 2, "钛媒体": 2, "亿欧": 1},
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "华为发布盘古智驾大模型：千亿参数，赋能多家车企端到端方案",
+      "source_name": "机器之心",
+      "publish_date": "2026-08-09",
+      "publish_ts": 1757386800,
+      "has_time": true,
+      "category": "技术",
+      "companies": ["华为"],
+      "importance": 96,
+      "is_featured": true,
+      "url": "https://www.jiqizhixin.com/articles/2026-08-09-10",
+      "summary": "华为发布盘古智驾大模型，参数规模达千亿级别，覆盖感知、预测、规划全链路，将以云端 API 形式向多家车企开放。",
+      "takeaway": "华为盘古智驾采用「云端大模型+车端小模型」协同架构，有望成为国内车企的「智驾基础设施」。",
+      "snippet": "华为盘古智驾大模型发布：千亿参数赋能车企端到端方案。余承东称「不做封闭生态，要帮更多车企做好智驾」。"
+    },
+    {
+      "title": "北京大兴机场开通 Robotaxi 专线，百度 Apollo 独家运营",
+      "source_name": "36氪",
+      "publish_date": "2026-08-09",
+      "publish_ts": 1757383200,
+      "has_time": true,
+      "category": "RoboX",
+      "companies": ["百度"],
+      "importance": 90,
+      "is_featured": true,
+      "url": "https://www.36kr.com/p/2890123456796",
+      "summary": "北京大兴国际机场正式开通 Robotaxi 专线，由百度 Apollo 独家运营，覆盖机场至市区主要商圈。",
+      "snippet": "北京大兴机场开通 Robotaxi 专线，百度独家运营。这是继深圳之后全国第二条机场 Robotaxi 线路。"
+    },
+    {
+      "title": "特斯拉 Dojo 2 超算中心投入使用：算力提升 5 倍，专注端到端训练",
+      "source_name": "钛媒体",
+      "publish_date": "2026-08-09",
+      "publish_ts": 1757379600,
+      "has_time": true,
+      "category": "技术",
+      "companies": ["特斯拉"],
+      "importance": 88,
+      "is_featured": true,
+      "url": "https://www.tmtpost.com/6789017",
+      "summary": "特斯拉 Dojo 2 超算中心正式投入使用，总算力达 100 Exa-FLOPS，较上一代提升 5 倍，将全部用于 FSD 端到端模型训练。",
+      "snippet": "特斯拉 Dojo 2 投入使用：100 Exa-FLOPS，Musk 称「这是地球上最强的 AI 训练集群」。"
+    }
+  ]
+}
