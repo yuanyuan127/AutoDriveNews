@@ -28,7 +28,7 @@ jobs:
 
       - name: 运行抓取管线
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           python scraper/main.py
 

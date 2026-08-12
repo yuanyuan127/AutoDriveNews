@@ -1,6 +1,6 @@
 """
-AI 处理模块 — 用 Claude API 对文章进行分类、打分、摘要、提取洞察
-需要环境变量: ANTHROPIC_API_KEY
+AI 处理模块 — 用 DeepSeek API 对文章进行分类、打分、摘要、提取洞察
+需要环境变量: DEEPSEEK_API_KEY
 """
 
 import json
@@ -9,9 +9,9 @@ import sys
 from datetime import datetime, timezone, timedelta
 
 try:
-    from anthropic import Anthropic
+    from openai import OpenAI
 except ImportError:
-    print("请先安装 anthropic SDK: pip install anthropic")
+    print("请先安装 openai SDK: pip install openai")
     sys.exit(1)
 
 TZ_BEIJING = timezone(timedelta(hours=8))
@@ -34,13 +34,23 @@ SYSTEM_PROMPT = """你是一个自动驾驶行业资讯分析专家。你的任�
    - 60-69: 一般动态
    - <60: 边缘信息
 3. summary: 50-150字中文摘要，提炼核心信息
-4. is_featured: 是否值得选入"每日精选"（当日最重要的 8-12 条）
+4. is_featured: 是否值得选入"每日精选"（当日最重要的 8-12 条，精选率控制在 30% 以内）
 5. companies: 文章中涉及的公司/机构名称列表
-6. takeaway: 仅对 is_featured=true 的文章，写一句 30-60 字的行业洞察/投资启示
+6. takeaway: 仅对 is_featured=true 的文章，写一句 30-60 字的行业洞察/投资启示；非精选文章留空字符串
 
-请严格按 JSON 数组格式返回，示例：
-[{"title":"...","category":"技术","importance":92,"summary":"...","is_featured":true,"companies":["特斯拉"],"takeaway":"..."}]
-"""
+请严格按 JSON 数组格式返回，不要包含其他文字：
+[{"title":"...","category":"技术","importance":92,"summary":"...","is_featured":true,"companies":["特斯拉"],"takeaway":"..."}]"""
+
+
+def get_client():
+    """获取 DeepSeek API 客户端"""
+    api_key = os.environ.get("DEEPSEEK_API_KEY", "")
+    if not api_key:
+        print("❌ 未设置 DEEPSEEK_API_KEY 环境变量")
+        print("   在 DeepSeek 平台获取: https://platform.deepseek.com/api_keys")
+        print("   export DEEPSEEK_API_KEY=sk-...")
+        sys.exit(1)
+    return OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
 
 
 def chunk_articles(articles: list, batch_size: int = 10) -> list:
@@ -61,26 +71,35 @@ def build_batch_input(articles: list, batch_idx: int, total_batches: int) -> str
     return "\n".join(lines)
 
 
+def parse_json_response(text: str) -> list:
+    """从 AI 返回的文本中解析 JSON 数组"""
+    text = text.strip()
+    # 去除 markdown 代码块标记
+    if text.startswith("```"):
+        lines = text.split("\n")
+        text = "\n".join(lines[1:]) if len(lines) > 1 else text
+        if text.endswith("```"):
+            text = text[:-3]
+    # 提取 JSON 数组
+    if "[" in text and "]" in text:
+        text = text[text.find("[") : text.rfind("]") + 1]
+    return json.loads(text)
+
+
 def process_articles(articles: list) -> list:
     """
-    用 Claude API 处理文章：分类、打分、摘要
+    用 DeepSeek API 处理文章：分类、打分、摘要
     返回增强后的文章列表
     """
     if not articles:
         print("⚠ 没有文章需要处理")
         return []
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not api_key:
-        print("❌ 未设置 ANTHROPIC_API_KEY 环境变量")
-        print("   export ANTHROPIC_API_KEY=sk-ant-...")
-        sys.exit(1)
-
-    client = Anthropic(api_key=api_key)
+    client = get_client()
     batches = list(chunk_articles(articles))
     processed = []
 
-    print(f"\n🤖 开始 AI 处理: {len(articles)} 篇文章, 分 {len(batches)} 批")
+    print(f"\n🤖 开始 AI 处理 (DeepSeek): {len(articles)} 篇文章, 分 {len(batches)} 批")
     print(f"{'='*60}")
 
     for idx, batch in enumerate(batches):
@@ -88,34 +107,25 @@ def process_articles(articles: list) -> list:
         user_input = build_batch_input(batch, idx, len(batches))
 
         try:
-            response = client.messages.create(
-                model="claude-sonnet-4-20250514",
+            response = client.chat.completions.create(
+                model="deepseek-chat",
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": user_input},
+                ],
                 max_tokens=4096,
-                system=SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": user_input}],
                 temperature=0.3,
             )
 
-            # 解析 AI 返回的 JSON
-            result_text = response.content[0].text
-            # 尝试提取 JSON 块
-            json_match = result_text.strip()
-            if json_match.startswith("```"):
-                json_match = json_match.split("\n", 1)[1].rsplit("\n```", 1)[0]
-            if "[" in json_match and "]" in json_match:
-                json_match = json_match[json_match.find("[") : json_match.rfind("]") + 1]
-
-            ai_results = json.loads(json_match)
+            result_text = response.choices[0].message.content
+            ai_results = parse_json_response(result_text)
 
             # 合并回原始数据
             for i, result in enumerate(ai_results):
                 if i < len(batch):
-                    # 保留原始抓取字段
                     merged = {**batch[i]}
-                    # 覆盖/添加 AI 分析字段
                     merged["category"] = result.get("category", "技术")
                     if merged["category"] not in CATEGORIES:
-                        # 默认归为技术类
                         merged["category"] = "技术"
                     merged["importance"] = int(result.get("importance", 70))
                     merged["summary"] = result.get("summary", merged.get("summary_raw", ""))
@@ -124,7 +134,8 @@ def process_articles(articles: list) -> list:
                     merged["takeaway"] = result.get("takeaway", "")
                     merged["has_time"] = True
                     processed.append(merged)
-                    print(f"  ✅ [{merged['category']}] 重要性:{merged['importance']} | {merged['title'][:50]}")
+                    star = "⭐" if merged["is_featured"] else "  "
+                    print(f"  {star} [{merged['category']}] 重要性:{merged['importance']} | {merged['title'][:50]}")
 
         except json.JSONDecodeError as e:
             print(f"  ❌ JSON 解析失败: {e}")
@@ -163,11 +174,10 @@ def generate_insight(featured_articles: list) -> list:
     if not featured_articles:
         return []
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not api_key:
+    try:
+        client = get_client()
+    except SystemExit:
         return []
-
-    client = Anthropic(api_key=api_key)
 
     articles_text = "\n\n".join(
         f"#{i} [{a['category']}] {a['title']}\n{a['summary']}\n公司: {', '.join(a.get('companies', []))}"
@@ -190,20 +200,17 @@ def generate_insight(featured_articles: list) -> list:
 - 市场格局变化"""
 
     try:
-        response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+        response = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[
+                {"role": "user", "content": prompt},
+            ],
             max_tokens=3000,
-            messages=[{"role": "user", "content": prompt}],
             temperature=0.5,
         )
 
-        result_text = response.content[0].text
-        if "```" in result_text:
-            result_text = result_text.split("\n", 1)[1].rsplit("\n```", 1)[0]
-        if "[" in result_text and "]" in result_text:
-            result_text = result_text[result_text.find("[") : result_text.rfind("]") + 1]
-
-        topics = json.loads(result_text)
+        result_text = response.choices[0].message.content
+        topics = parse_json_response(result_text)
         print(f"\n📊 生成了 {len(topics)} 个洞察专题")
         return topics
 

@@ -27,13 +27,14 @@ gh repo create autodrive --public --source=. --push
 
 ### 3. 配置自动抓取（核心步骤）
 
-#### 3.1 添加 API Key
+#### 3.1 添加 DeepSeek API Key
 
 进入仓库 → Settings → Secrets and variables → Actions → New repository secret：
-- **Name**: `ANTHROPIC_API_KEY`
-- **Value**: 你的 Claude API Key（格式 `sk-ant-...`）
+- **Name**: `DEEPSEEK_API_KEY`
+- **Value**: 你的 DeepSeek API Key（格式 `sk-...`）
 
-> 如果你还没有 Anthropic API Key，去 [console.anthropic.com](https://console.anthropic.com/) 创建。
+> 去 [platform.deepseek.com/api_keys](https://platform.deepseek.com/api_keys) 创建。
+> DeepSeek 性价比极高，每天处理几十篇文章仅需几分钱。
 
 #### 3.2 启用 GitHub Actions
 
@@ -48,7 +49,7 @@ gh repo create autodrive --public --source=. --push
 pip install -r requirements.txt
 
 # 设置 API Key
-export ANTHROPIC_API_KEY=sk-ant-...
+export DEEPSEEK_API_KEY=sk-...
 
 # 运行抓取（默认抓昨天）
 python scraper/main.py
