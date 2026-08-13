@@ -1,0 +1,27 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "张一鸣的「慢」，和整个行业的「快」",
+      "url": "https://www.tmtpost.com/8100294.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "大模型的虚火还在烧。",
+      "publish_ts": 1786530007,
+      "publish_date": "2026-08-12",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 65,
+      "summary": "文章探讨了字节跳动创始人张一鸣在大模型热潮中采取相对谨慎、慢节奏的策略，与行业普遍追求快速迭代、规模扩张的“快”形成对比。内容聚焦于大模型领域的竞争态势、战略选择与行业虚火，反映了头部科技公司对AI技术路线和商业化节奏的差异化思考。",
+      "is_featured": false,
+      "companies": [
+        "字节跳动"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
