@@ -1,24 +1,42 @@
 {
-  "selected_count": 1,
+  "selected_count": 2,
   "items": [
     {
-      "title": "兴锋作浪，大模型和机器人抢着“联姻”",
-      "url": "https://www.tmtpost.com/8104508.html",
+      "title": "超节点绕行英伟达：国产算力换了一条赛道",
+      "url": "https://www.tmtpost.com/8104729.html",
       "source_name": "钛媒体",
       "source_key": "tmtpost",
-      "summary_raw": "DeepSeek在宇树IPO上的1.41亿元战配，所代表的信号正引发一系列连锁反应。",
-      "publish_ts": 1786795464,
-      "publish_date": "2026-08-15",
+      "summary_raw": "真正让英伟达紧张的，是有人在系统层面重新定义了算力供给的方式。",
+      "publish_ts": 1786886287,
+      "publish_date": "2026-08-16",
       "fetched_from": "rss",
-      "category": "市场",
-      "importance": 78,
-      "summary": "DeepSeek以1.41亿元战略配售参与宇树科技IPO，标志着大模型公司与具身智能机器人企业的深度绑定。此举引发连锁反应，推动AI大模型与机器人产业加速融合，预示技术协同与资本合作将成为行业新趋势。",
+      "category": "硬件",
+      "importance": 88,
+      "summary": "国产算力厂商正通过超节点架构在系统层面重新定义算力供给方式，绕开对英伟达单芯片的依赖。这一系统级创新可能改变AI算力竞争格局，为国产算力开辟新赛道，对英伟达构成潜在威胁。",
       "is_featured": true,
       "companies": [
-        "DeepSeek",
-        "宇树科技"
+        "英伟达"
       ],
-      "takeaway": "大模型与机器人龙头资本联姻，具身智能赛道估值逻辑重构，关注后续技术协同与商业化落地。",
+      "takeaway": "国产算力竞争从芯片转向系统架构，超节点方案有望突破单点限制，关注相关系统集成与互联技术企业。",
+      "has_time": true
+    },
+    {
+      "title": "光模块没有死，但\"可插拔\"死了：英伟达CPO量产的产业链账",
+      "url": "https://www.tmtpost.com/8104976.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "对那些做了十年可插拔光模块的厂商来说，最难回答的问题不是\"CPO什么时候上量\"，而是一个更值得担忧的问题：当全球最大的光模块买家开始自己焊光引擎了，你的下一个客户又是谁？",
+      "publish_ts": 1786887094,
+      "publish_date": "2026-08-16",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 85,
+      "summary": "英伟达推进CPO（共封装光学）量产，将光引擎直接集成到芯片封装中，对传统可插拔光模块厂商构成颠覆性威胁。全球最大买家自研光引擎，迫使产业链重新定位，可插拔光模块市场面临萎缩，行业格局将发生深刻变化。",
+      "is_featured": true,
+      "companies": [
+        "英伟达"
+      ],
+      "takeaway": "CPO量产将重塑光模块产业链，传统可插拔厂商需加速向CPO配套或新市场转型，关注英伟达供应链上游新机会。",
       "has_time": true
     }
   ]

@@ -1,0 +1,96 @@
+{
+  "source_counts": {
+    "钛媒体": 4
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "超节点绕行英伟达：国产算力换了一条赛道",
+      "url": "https://www.tmtpost.com/8104729.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "真正让英伟达紧张的，是有人在系统层面重新定义了算力供给的方式。",
+      "publish_ts": 1786886287,
+      "publish_date": "2026-08-16",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 88,
+      "summary": "国产算力厂商正通过超节点架构在系统层面重新定义算力供给方式，绕开对英伟达单芯片的依赖。这一系统级创新可能改变AI算力竞争格局，为国产算力开辟新赛道，对英伟达构成潜在威胁。",
+      "is_featured": true,
+      "companies": [
+        "英伟达"
+      ],
+      "takeaway": "国产算力竞争从芯片转向系统架构，超节点方案有望突破单点限制，关注相关系统集成与互联技术企业。",
+      "has_time": true
+    },
+    {
+      "title": "光模块没有死，但\"可插拔\"死了：英伟达CPO量产的产业链账",
+      "url": "https://www.tmtpost.com/8104976.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "对那些做了十年可插拔光模块的厂商来说，最难回答的问题不是\"CPO什么时候上量\"，而是一个更值得担忧的问题：当全球最大的光模块买家开始自己焊光引擎了，你的下一个客户又是谁？",
+      "publish_ts": 1786887094,
+      "publish_date": "2026-08-16",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 85,
+      "summary": "英伟达推进CPO（共封装光学）量产，将光引擎直接集成到芯片封装中，对传统可插拔光模块厂商构成颠覆性威胁。全球最大买家自研光引擎，迫使产业链重新定位，可插拔光模块市场面临萎缩，行业格局将发生深刻变化。",
+      "is_featured": true,
+      "companies": [
+        "英伟达"
+      ],
+      "takeaway": "CPO量产将重塑光模块产业链，传统可插拔厂商需加速向CPO配套或新市场转型，关注英伟达供应链上游新机会。",
+      "has_time": true
+    },
+    {
+      "title": "【数智周报】  华为云OfficeClaw升级为OfficeAce；Meta发布轻量化AI模型，单张显卡即可运行；千问办公助理收费；智谱宣布ZCode全面升级",
+      "url": "https://www.tmtpost.com/8104888.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "（8月10日~8月15日）面壁智能启动IPO；英伟达研发万亿参数开源模型Nemotron 4；SpaceXAI推出“全天候数字同事”Grok Bot；宇树科技：网上投资者放弃认购8734股",
+      "publish_ts": 1786882121,
+      "publish_date": "2026-08-16",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 70,
+      "summary": "本周AI动态密集：华为云OfficeClaw升级为OfficeAce，Meta发布轻量化AI模型可单卡运行，千问办公助理开始收费，智谱ZCode全面升级。此外，面壁智能启动IPO，英伟达研发万亿参数开源模型，宇树科技IPO认购情况公布。",
+      "is_featured": false,
+      "companies": [
+        "华为云",
+        "Meta",
+        "千问",
+        "智谱",
+        "面壁智能",
+        "英伟达",
+        "SpaceXAI",
+        "宇树科技"
+      ],
+      "takeaway": "",
+      "has_time": true
+    },
+    {
+      "title": "Edge AI Daily 早报（8月16日）",
+      "url": "https://www.tmtpost.com/8104869.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "白宫签署网络私掠许可证框架，授权私营企业对外网络攻击，引发法律与外交风险。OpenAI设friction邮箱直通CEO，对抗规模膨胀官僚化。索尼PSSR用核预测网络替代神经网络，画质提升且训练成本骤降。NVIDIA联合印尼高校建AI中心，从GPU供应商升级为人才培养基础设施。O'Reilly警告AI大厂重蹈微软垄断覆辙，主张开源参与式架构。AWS智能体层密集更新，同日曝出云存储崩溃致50TB档案被锁，暴露可靠性隐患。",
+      "publish_ts": 1786841101,
+      "publish_date": "2026-08-16",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 65,
+      "summary": "AI行业多线并进：白宫签署网络私掠许可证框架引发争议；OpenAI设直通CEO邮箱对抗官僚化；索尼PSSR用核预测网络提升画质并降低成本；NVIDIA联合印尼高校建AI中心；O'Reilly警告AI垄断风险；AWS智能体层更新但曝出云存储崩溃事故。",
+      "is_featured": false,
+      "companies": [
+        "OpenAI",
+        "索尼",
+        "NVIDIA",
+        "AWS",
+        "白宫",
+        "O'Reilly"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
