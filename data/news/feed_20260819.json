@@ -1,5 +1,8 @@
 {
-  "selected_count": 1,
+  "source_counts": {
+    "钛媒体": 2
+  },
+  "brand_counts": {},
   "items": [
     {
       "title": "苹果牵手阿里、特斯拉绑定字节：全球AI下半场，中国坐庄了？",
@@ -21,6 +24,25 @@
         "字节跳动"
       ],
       "takeaway": "中国AI大模型正通过绑定全球头部硬件厂商实现规模化落地，场景化能力成为比参数竞赛更关键的竞争壁垒。",
+      "has_time": true
+    },
+    {
+      "title": "ByteDance Quietly Shuts Down Its Short-Lived Paid Novel App",
+      "url": "https://www.tmtpost.com/8109004.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "After eight months of limited traction, the company’s experimental paid-reading product closes its servers, underscoring the stubborn divide between free and paid online fiction in a market already dominated by established players.",
+      "publish_ts": 1787133363,
+      "publish_date": "2026-08-19",
+      "fetched_from": "rss",
+      "category": "市场",
+      "importance": 45,
+      "summary": "字节跳动旗下付费阅读应用因市场反响不佳，在运营八个月后悄然关闭服务器。该应用在免费与付费网络文学市场分化明显的背景下未能获得足够用户，凸显了字节在内容付费领域的探索受挫，以及现有市场格局的稳固。",
+      "is_featured": false,
+      "companies": [
+        "字节跳动"
+      ],
+      "takeaway": "",
       "has_time": true
     }
   ]
