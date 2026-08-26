@@ -1,0 +1,27 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "启智加码机器人技能服务，HumanGPT向真实作业数据要能力",
+      "url": "https://www.tmtpost.com/8116327.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "机器人公司交付的内容，已经越过硬件本体，延伸到技能的采集，训练和持续更新。",
+      "publish_ts": 1787655291,
+      "publish_date": "2026-08-25",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 65,
+      "summary": "启智机器人推出HumanGPT，聚焦机器人技能服务，强调从硬件本体向技能采集、训练和持续更新延伸。通过真实作业数据驱动，提升机器人在复杂场景下的操作能力，反映行业从硬件竞争转向数据与算法驱动的趋势。",
+      "is_featured": false,
+      "companies": [
+        "启智机器人"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
