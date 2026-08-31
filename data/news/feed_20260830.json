@@ -1,0 +1,25 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "自动驾驶入法后，罚单还得车主交?",
+      "url": "https://www.tmtpost.com/8122093.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "“激活状态”或是未来官司的焦点。",
+      "publish_ts": 1788086734,
+      "publish_date": "2026-08-30",
+      "fetched_from": "rss",
+      "category": "政策",
+      "importance": 85,
+      "summary": "随着自动驾驶相关法规的推进，文章探讨了在自动驾驶系统激活状态下发生交通违法时，责任归属与罚单处理的问题。核心焦点在于“激活状态”的法律定义，这将成为未来界定驾驶员与系统责任、处理交通违法及事故纠纷的关键，对行业法规落地具有重要指导意义。",
+      "is_featured": true,
+      "companies": [],
+      "takeaway": "责任界定是自动驾驶商业化前提，'激活状态'定义将重塑车险与车企责任边界，法规细化利好行业长期规范发展。",
+      "has_time": true
+    }
+  ]
+}
