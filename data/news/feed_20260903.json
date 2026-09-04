@@ -1,0 +1,27 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "独家｜耐士劳新任总裁落棋三子：户外庭院品牌归拢、自研激光雷达、布局四足狗",
+      "url": "https://www.tmtpost.com/8127496.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "对于李建来说，耐士劳过去是一家产品公司，未来有望变成一家技术和场景驱动的机器人生态公司。接下来的考验不是推出多少新品，而是公司能否在设想的发展路径上持续跑通。",
+      "publish_ts": 1788433200,
+      "publish_date": "2026-09-03",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 65,
+      "summary": "耐士劳新任总裁李建提出战略调整，计划归拢户外庭院品牌，自研激光雷达，并布局四足机器人。公司定位从产品公司转向技术和场景驱动的机器人生态公司，但面临持续执行和商业化验证的挑战。",
+      "is_featured": false,
+      "companies": [
+        "耐士劳"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
