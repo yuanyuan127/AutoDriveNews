@@ -1,0 +1,25 @@
+{
+  "selected_count": 1,
+  "items": [
+    {
+      "title": "Cybercab刚上路就被查，特斯拉把无人车开进了法规盲区",
+      "url": "https://www.tmtpost.com/8130213.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "旧规则正在跟不上技术，但新的规则又还没有完全准备好。",
+      "publish_ts": 1788698779,
+      "publish_date": "2026-09-06",
+      "fetched_from": "rss",
+      "category": "政策",
+      "importance": 88,
+      "summary": "特斯拉Cybercab在加州上路测试即遭监管调查，凸显自动驾驶技术商业化与现行法规之间的严重脱节。文章指出，现有交通法规和车辆安全标准未针对无方向盘、无后视镜的无人车设计，形成监管盲区。特斯拉的激进推进策略正倒逼监管机构加速制定新规则，但新旧规则交替期的法律不确定性成为行业最大风险之一。",
+      "is_featured": true,
+      "companies": [
+        "特斯拉",
+        "加州机动车管理局"
+      ],
+      "takeaway": "监管滞后是Robotaxi规模化最大瓶颈，特斯拉激进测试将倒逼全球法规加速重构，关注政策窗口期投资机会。",
+      "has_time": true
+    }
+  ]
+}
