@@ -1,0 +1,25 @@
+{
+  "selected_count": 1,
+  "items": [
+    {
+      "title": "从AI PC到个人AI，联想敲定新赛道｜IFA 2026",
+      "url": "https://www.tmtpost.com/8132045.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "携手英伟达，联想将千亿参数大模型装进笔记本。",
+      "publish_ts": 1788861531,
+      "publish_date": "2026-09-08",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 78,
+      "summary": "联想在IFA 2026上宣布与英伟达合作，将千亿参数大模型部署至笔记本端，推动AI PC向个人AI演进。此举标志端侧AI算力与模型压缩技术取得突破，为消费级硬件开辟新赛道。",
+      "is_featured": true,
+      "companies": [
+        "联想",
+        "英伟达"
+      ],
+      "takeaway": "端侧大模型落地PC将加速个人AI普及，利好具备软硬协同能力的整机与芯片厂商。",
+      "has_time": true
+    }
+  ]
+}
