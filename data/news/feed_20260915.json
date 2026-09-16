@@ -1,0 +1,27 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "Atlas用3D重建开路，世界模型进入可测量的新阶段",
+      "url": "https://www.tmtpost.com/8140715.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "机器人感知世界的方式正在被重新定义。",
+      "publish_ts": 1789466851,
+      "publish_date": "2026-09-15",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 72,
+      "summary": "钛媒体报道，Atlas通过3D重建技术为世界模型开辟新路径，使世界模型进入可测量的新阶段。该进展意味着机器人感知世界的方式正被重新定义，3D重建有望提升世界模型在自动驾驶与机器人领域的可评估性和泛化能力，为端到端感知与仿真训练提供更可靠的基础。",
+      "is_featured": true,
+      "companies": [
+        "Atlas"
+      ],
+      "takeaway": "3D重建让世界模型从概念走向可量化评估，为自动驾驶仿真与端到端训练提供新基础设施，值得关注相关技术路线。",
+      "has_time": true
+    }
+  ]
+}
