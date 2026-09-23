@@ -1,0 +1,27 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "从卖芯片到做平台，地平线押注“Arm+Android”模式",
+      "url": "https://www.tmtpost.com/8148860.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "地平线征程芯片突破1500万颗，Arm+Android模式正成为其进入车企自研体系的新支点。",
+      "publish_ts": 1790086411,
+      "publish_date": "2026-09-22",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 78,
+      "summary": "地平线征程系列芯片累计出货量突破1500万颗，公司正从单纯销售芯片转向构建平台化生态，借鉴Arm+Android模式，通过开放工具链和软件栈吸引车企在其芯片上自研算法，从而深度嵌入车企自研体系。这一战略转型标志着国产智驾芯片厂商从硬件供应商向平台服务商的角色升级。",
+      "is_featured": true,
+      "companies": [
+        "地平线"
+      ],
+      "takeaway": "地平线以1500万颗出货量为基盘，试图用平台生态锁定车企自研需求，若模式跑通将重塑国产智驾芯片竞争壁垒。",
+      "has_time": true
+    }
+  ]
+}
