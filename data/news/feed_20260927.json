@@ -1,5 +1,8 @@
 {
-  "selected_count": 1,
+  "source_counts": {
+    "钛媒体": 2
+  },
+  "brand_counts": {},
   "items": [
     {
       "title": "不用专门训练自动驾驶，GPT-6 Astra已经能开真车了？",
@@ -18,6 +21,26 @@
         "OpenAI"
       ],
       "takeaway": "通用大模型零样本控车若成立，将削弱专用自动驾驶数据壁垒，重塑技术路线与估值逻辑。",
+      "has_time": true
+    },
+    {
+      "title": "苹果或重返服务器，互联市场开始“群雄逐鹿”",
+      "url": "https://www.tmtpost.com/8153405.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "英伟达势力范围再扩大，初创公司也在抢生意。",
+      "publish_ts": 1790502494,
+      "publish_date": "2026-09-27",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 62,
+      "summary": "钛媒体报道称，英伟达在服务器与互联市场的势力范围持续扩大，同时多家初创公司入局抢生意，苹果也可能重返服务器赛道。文章聚焦数据中心互联与算力硬件竞争格局，反映AI算力需求驱动下服务器产业链的重新洗牌。",
+      "is_featured": false,
+      "companies": [
+        "苹果",
+        "英伟达"
+      ],
+      "takeaway": "",
       "has_time": true
     }
   ]
