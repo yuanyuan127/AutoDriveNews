@@ -1,0 +1,25 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "ARR真的是大模型企业的黄金指标吗？",
+      "url": "https://www.tmtpost.com/8154376.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "快速上涨的ARR，要花多少钱才能维持。",
+      "publish_ts": 1790680381,
+      "publish_date": "2026-09-29",
+      "fetched_from": "rss",
+      "category": "市场",
+      "importance": 55,
+      "summary": "钛媒体发文质疑大模型企业将ARR（年度经常性收入）作为核心指标的合理性，指出快速上涨的ARR背后需要高额成本维持，可能掩盖企业真实盈利能力。文章讨论了大模型商业化中收入质量与增长可持续性问题，对评估AI企业估值逻辑具有参考意义。",
+      "is_featured": false,
+      "companies": [],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
