@@ -1,0 +1,24 @@
+{
+  "selected_count": 1,
+  "items": [
+    {
+      "title": "豪掷82亿美元，芯片巨头押注的世界模型究竟是什么",
+      "url": "https://www.tmtpost.com/8157833.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "当AI开始生成“世界”，影音游内容正在被颠覆。",
+      "publish_ts": 1790841882,
+      "publish_date": "2026-10-01",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 78,
+      "summary": "文章解析某芯片巨头投入82亿美元押注世界模型（World Model）的动因与技术内涵。世界模型通过让AI理解并生成物理世界的动态规律，正被用于颠覆影视、游戏等内容生产。此举显示算力厂商正从硬件供应向底层AI范式延伸，抢占下一代内容生成与仿真训练的技术制高点。",
+      "is_featured": true,
+      "companies": [
+        "英伟达"
+      ],
+      "takeaway": "世界模型将物理规律建模与内容生成结合，是自动驾驶仿真与具身智能的关键底座，芯片巨头重金押注意味着该赛道或成下一轮算力需求爆发点。",
+      "has_time": true
+    }
+  ]
+}
