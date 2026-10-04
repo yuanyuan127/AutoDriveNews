@@ -1,0 +1,25 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "大模型一体机，开始缩水了",
+      "url": "https://www.tmtpost.com/8158443.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "大模型一体机市场，劈成了两半。",
+      "publish_ts": 1790991530,
+      "publish_date": "2026-10-03",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 62,
+      "summary": "钛媒体文章指出，大模型一体机市场正出现明显分化，呈现“劈成两半”的格局。部分厂商产品缩水、需求降温，而另一部分则向更高算力、更强集成度方向演进。这一变化反映出大模型落地从概念炒作转向务实，硬件集成方案面临成本、算力与场景适配的多重考验。",
+      "is_featured": false,
+      "companies": [],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
