@@ -1,0 +1,25 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "硅谷AI，正在开源",
+      "url": "https://www.tmtpost.com/8159477.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "大模型从哪家强到哪家合适的转变。",
+      "publish_ts": 1791185527,
+      "publish_date": "2026-10-05",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 62,
+      "summary": "文章讨论硅谷AI大模型领域从比拼模型能力转向关注适用性的趋势，开源成为重要方向。随着开源模型能力提升，企业选型逻辑从'哪家强'转向'哪家合适'，开源生态正在改变大模型竞争格局。",
+      "is_featured": false,
+      "companies": [],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
