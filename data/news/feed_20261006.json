@@ -1,0 +1,29 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "世界模型赛道：谁在收编，谁在突围？",
+      "url": "https://www.tmtpost.com/8159876.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "芯片巨头们开抢模型",
+      "publish_ts": 1791261116,
+      "publish_date": "2026-10-06",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 78,
+      "summary": "钛媒体报道世界模型赛道竞争格局，芯片巨头正加速布局并收编相关模型团队。文章探讨了在自动驾驶与具身智能推动下，世界模型成为关键技术方向，芯片厂商通过投资、收购或自研方式切入，行业面临整合与突围并存的局面。",
+      "is_featured": true,
+      "companies": [
+        "英伟达",
+        "高通",
+        "地平线"
+      ],
+      "takeaway": "世界模型正从学术概念走向产业落地，芯片巨头收编模型团队意味着软硬协同成为竞争核心，创业公司需警惕被整合或找准差异化突围路径。",
+      "has_time": true
+    }
+  ]
+}
