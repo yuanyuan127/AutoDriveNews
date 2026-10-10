@@ -1,5 +1,8 @@
 {
-  "selected_count": 1,
+  "source_counts": {
+    "钛媒体": 2
+  },
+  "brand_counts": {},
   "items": [
     {
       "title": "Robotaxi Races Shift From Tech Specs to Partnerships",
@@ -16,6 +19,28 @@
       "is_featured": true,
       "companies": [],
       "takeaway": "Robotaxi竞争已从技术单点转向制造、运营与需求整合能力，具备产业链协同和商业化落地能力的玩家将胜出。",
+      "has_time": true
+    },
+    {
+      "title": "特斯拉供应商们，正在悄悄“造人”",
+      "url": "https://www.tmtpost.com/8162947.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "人形机器人量产前夜，均胜、拓普、三花抢跑。",
+      "publish_ts": 1791541134,
+      "publish_date": "2026-10-09",
+      "fetched_from": "rss",
+      "category": "市场",
+      "importance": 68,
+      "summary": "人形机器人量产前夜，特斯拉供应商均胜电子、拓普集团、三花智控等正积极布局机器人业务，抢跑新赛道。这些汽车零部件企业凭借精密制造和客户关系优势，试图在机器人产业链中占据关键位置。",
+      "is_featured": false,
+      "companies": [
+        "特斯拉",
+        "均胜电子",
+        "拓普集团",
+        "三花智控"
+      ],
+      "takeaway": "",
       "has_time": true
     }
   ]
