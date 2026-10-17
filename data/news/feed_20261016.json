@@ -1,0 +1,46 @@
+{
+  "source_counts": {
+    "钛媒体": 2
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "特斯拉都飞了，还要自动驾驶？",
+      "url": "https://www.tmtpost.com/8171034.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "马斯克用一台不依赖盈利、不依赖监管、纯靠物理奇观的车，抢回 \"技术先锋\" 的定义权。他亲口说的 \"最后几辆人类驾驶汽车中的佼佼者\"，是对自动驾驶兑现周期最诚实的一句供认。",
+      "publish_ts": 1792144209,
+      "publish_date": "2026-10-16",
+      "fetched_from": "rss",
+      "category": "市场",
+      "importance": 72,
+      "summary": "文章评论马斯克以不依赖盈利与监管的物理奇观式产品重塑特斯拉技术先锋形象，并指出其“最后几辆人类驾驶汽车中的佼佼者”表态，实质是对自动驾驶商业化兑现周期拉长的诚实供认，反映行业预期与现实之间的落差。",
+      "is_featured": true,
+      "companies": [
+        "特斯拉"
+      ],
+      "takeaway": "马斯克的叙事转向说明自动驾驶兑现周期被拉长，投资者需警惕估值从FSD叙事向其他概念迁移的风险。",
+      "has_time": true
+    },
+    {
+      "title": "硅谷AI杀疯了，DeepSeek们的性价比还剩多少？",
+      "url": "https://www.tmtpost.com/8170871.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "硅谷羊毛薅爽了，国产大模型贵得“烧心”？",
+      "publish_ts": 1792141125,
+      "publish_date": "2026-10-16",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 55,
+      "summary": "文章讨论硅谷大模型能力快速迭代背景下，以DeepSeek为代表的国产大模型性价比优势是否仍能维持，涉及模型能力、调用成本与商业化竞争格局的变化，与自动驾驶直接关联较弱。",
+      "is_featured": false,
+      "companies": [
+        "DeepSeek"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
