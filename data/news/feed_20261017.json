@@ -1,0 +1,45 @@
+{
+  "source_counts": {
+    "钛媒体": 2
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "通用大模型正在重做机器人的研发与交付",
+      "url": "https://www.tmtpost.com/8171971.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "VLA没有死，死的是旧分工。",
+      "publish_ts": 1792229355,
+      "publish_date": "2026-10-17",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 78,
+      "summary": "钛媒体报道通用大模型正在重塑机器人研发与交付流程，VLA（视觉-语言-动作）模型并未消亡，真正被淘汰的是传统软硬件分工模式。大模型驱动的一体化研发范式正在改变机器人从算法到交付的链路，对具身智能与自动驾驶技术路线具有参考意义。",
+      "is_featured": true,
+      "companies": [],
+      "takeaway": "VLA路线仍具生命力，旧分工被重构意味着具备大模型+本体一体化能力的团队将获得研发效率与交付成本优势。",
+      "has_time": true
+    },
+    {
+      "title": "半年亏损1.91亿！特斯拉供应商冲刺“A+H”，超颖电子现金流亮红灯",
+      "url": "https://www.tmtpost.com/8171868.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "全球汽车HDI第一，核心业务毛利率只剩2.8%。",
+      "publish_ts": 1792215371,
+      "publish_date": "2026-10-17",
+      "fetched_from": "rss",
+      "category": "市场",
+      "importance": 62,
+      "summary": "特斯拉供应商超颖电子冲刺A+H上市，作为全球汽车HDI板第一，其核心业务毛利率仅剩2.8%，半年亏损1.91亿元，现金流承压。反映汽车PCB供应链价格竞争激烈、盈利空间被压缩，二线供应商在资本市场的融资诉求增强。",
+      "is_featured": false,
+      "companies": [
+        "超颖电子",
+        "特斯拉"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
