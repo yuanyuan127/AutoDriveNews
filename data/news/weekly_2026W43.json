@@ -1,0 +1,26 @@
+{
+  "selected_count": 1,
+  "items": [
+    {
+      "title": "Open Inference Code Narrows the Gap Between Rival AI Chips",
+      "url": "https://www.tmtpost.com/8176740.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "DeepSeek released serving software that builds for Huawei accelerators and Nvidia GPUs from one codebase. In China, where boards are scarce and token traffic is rising, that choice could reshape how teams pick hardware—if live traffic backs up the demos.",
+      "publish_ts": 1792578545,
+      "publish_date": "2026-10-21",
+      "fetched_from": "rss",
+      "category": "硬件",
+      "importance": 72,
+      "summary": "DeepSeek发布开源推理服务软件，支持同一代码库同时构建华为加速器与英伟达GPU版本。在中国算力板卡紧缺、token流量攀升的背景下，这一选择可能改变团队选型逻辑，但实际效果仍需真实流量验证。",
+      "is_featured": true,
+      "companies": [
+        "DeepSeek",
+        "华为",
+        "英伟达"
+      ],
+      "takeaway": "推理层软硬件解耦降低国产芯片迁移门槛，若真实流量验证成立，将削弱英伟达生态锁定，利好华为昇腾等国产算力替代。",
+      "has_time": true
+    }
+  ]
+}
