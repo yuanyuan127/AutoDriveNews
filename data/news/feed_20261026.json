@@ -1,0 +1,28 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "端到端推理时延降低 15%：京东广告联合鲲鹏超节点，探索生成式广告行业新路径",
+      "url": "https://www.tmtpost.com/8181692.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "京东广告面临生成式推荐带来的千倍算力需求与300毫秒时延红线之间的尖锐矛盾，真正的瓶颈在通算侧而非GPU。为此，京东与华为鲲鹏合作，通过灵衢互联将四级缓存压成两级，建成300TB共享内存池，并重构RPC通信，使端到端推理时延降低15%，KV Cache和RPC性能大幅提升，经618大促核心场景5%流量验证。双方合作正从广告向搜推等场景外溢，并布局SuperCache、Agent沙箱等方向，以应对Agentic AI时代的算力挑战。",
+      "publish_ts": 1793017153,
+      "publish_date": "2026-10-26",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 45,
+      "summary": "京东广告与华为鲲鹏合作，针对生成式推荐千倍算力需求与300毫秒时延红线的矛盾，通过灵衢互联将四级缓存压缩为两级、建成300TB共享内存池并重构RPC通信，使端到端推理时延降低15%，KV Cache与RPC性能大幅提升，已在618大促核心场景5%流量验证，合作正向搜推等场景外溢。",
+      "is_featured": false,
+      "companies": [
+        "京东",
+        "华为鲲鹏"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
