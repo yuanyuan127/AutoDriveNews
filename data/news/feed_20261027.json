@@ -1,0 +1,44 @@
+{
+  "source_counts": {
+    "钛媒体": 2
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "智驾装车越来越多，供应商赚钱却没那么容易",
+      "url": "https://www.tmtpost.com/8183328.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "车型定点越来越多，生意却未必更好做，天瞳威视的量产实践折射出智驾供应商的商业化难题。",
+      "publish_ts": 1793108668,
+      "publish_date": "2026-10-27",
+      "fetched_from": "rss",
+      "category": "市场",
+      "importance": 72,
+      "summary": "文章以天瞳威视为例，剖析智驾供应商在车型定点数量增长背景下仍面临盈利困难的商业化困境。量产规模扩大并未带来利润同步提升，反映出智驾供应链价格竞争激烈、研发投入高企、主机厂压价等行业结构性问题，揭示行业从技术竞赛转向成本与交付能力比拼的趋势。",
+      "is_featured": true,
+      "companies": [
+        "天瞳威视"
+      ],
+      "takeaway": "智驾渗透率提升不等于供应商盈利改善，定点数量与利润脱钩，投资需关注具备规模化降本与主机厂议价能力的头部供应商。",
+      "has_time": true
+    },
+    {
+      "title": "“跑高分”不等于“能交付”：AI排行榜正在经历一场信用重估",
+      "url": "https://www.tmtpost.com/8183550.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "旧榜跑分逼近满分，新榜实战却集体不及格。当大模型评测本身变成生意，企业选型正从看排名转向算成本账。",
+      "publish_ts": 1793097762,
+      "publish_date": "2026-10-27",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 65,
+      "summary": "文章指出大模型评测榜单存在旧榜跑分接近满分、新榜实战表现集体不及格的现象，评测本身已商业化，导致公信力受质疑。企业选型正从依赖排名转向核算实际部署成本与交付能力，反映AI评测体系正经历信用重估，对自动驾驶端到端模型等依赖评测选型的领域具有参考意义。",
+      "is_featured": false,
+      "companies": [],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
