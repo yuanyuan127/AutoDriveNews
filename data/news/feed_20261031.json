@@ -1,0 +1,25 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "让AI拼我用了12天完成的1000片“纯白地狱”，它五小时就崩溃了",
+      "url": "https://www.tmtpost.com/8188396.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "我耗时 12 天拼完 1000 片纯白地狱拼图，尝试交给大模型挑战，它 5 小时便陷入崩溃。不是 AI 不能拼，而是擅长看图描述的生成式大模型缺少精密测量与全局约束能力；传统机器视觉方案反倒可行。这件实验，也照见我们当下思考外包、本末倒置的认知困境。",
+      "publish_ts": 1793449093,
+      "publish_date": "2026-10-31",
+      "fetched_from": "rss",
+      "category": "技术",
+      "importance": 35,
+      "summary": "作者以1000片纯白拼图作为实验对象，测试生成式大模型的空间推理能力，结果AI在5小时内崩溃，而传统机器视觉方案反而可行。文章指出生成式大模型擅长图像描述，但缺乏精密测量与全局约束能力，借此反思当下将思考外包给AI的认知困境。",
+      "is_featured": false,
+      "companies": [],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
