@@ -1,0 +1,27 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "Waymo不想再当“技术供应商”了",
+      "url": "https://www.tmtpost.com/8195043.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "Waymo 用了七八年时间证明自动驾驶能安全地跑起来。接下来它要证明的是另一件事：一家自动驾驶公司，能不能同时成为一家有人愿意打开、愿意信任、愿意直接付钱的出行品牌。",
+      "publish_ts": 1793959778,
+      "publish_date": "2026-11-06",
+      "fetched_from": "rss",
+      "category": "RoboX",
+      "importance": 82,
+      "summary": "Waymo在证明自动驾驶技术安全可行后，正推动战略转型：从技术供应商转向面向消费者的出行品牌，目标是让用户愿意直接打开、信任并付费使用其Robotaxi服务。这标志着其商业模式从B端技术输出向C端出行服务运营延伸，是自动驾驶商业化路径的重要探索。",
+      "is_featured": true,
+      "companies": [
+        "Waymo"
+      ],
+      "takeaway": "Waymo从技术输出转向C端出行品牌，意味着Robotaxi竞争正从技术验证进入用户心智与商业化运营的下半场。",
+      "has_time": true
+    }
+  ]
+}

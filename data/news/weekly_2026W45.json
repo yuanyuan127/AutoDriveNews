@@ -2,25 +2,22 @@
   "selected_count": 1,
   "items": [
     {
-      "title": "大模型时代，智驾芯片的算力赢学失效了",
-      "url": "https://www.tmtpost.com/8193596.html",
+      "title": "Waymo不想再当“技术供应商”了",
+      "url": "https://www.tmtpost.com/8195043.html",
       "source_name": "钛媒体",
       "source_key": "tmtpost",
-      "summary_raw": "玩不过通用芯片，就玩定制芯片。",
-      "publish_ts": 1793789064,
-      "publish_date": "2026-11-04",
+      "summary_raw": "Waymo 用了七八年时间证明自动驾驶能安全地跑起来。接下来它要证明的是另一件事：一家自动驾驶公司，能不能同时成为一家有人愿意打开、愿意信任、愿意直接付钱的出行品牌。",
+      "publish_ts": 1793959778,
+      "publish_date": "2026-11-06",
       "fetched_from": "rss",
-      "category": "硬件",
-      "importance": 78,
-      "summary": "文章讨论大模型时代智能驾驶芯片竞争逻辑的转变：单纯堆叠算力的\"算力赢学\"正在失效，通用芯片与定制芯片路线之争成为焦点。随着端到端大模型上车，芯片的能效比、软硬协同与定制化能力比峰值算力更关键，行业正从参数竞赛转向实际量产落地与架构适配能力的比拼。",
+      "category": "RoboX",
+      "importance": 82,
+      "summary": "Waymo在证明自动驾驶技术安全可行后，正推动战略转型：从技术供应商转向面向消费者的出行品牌，目标是让用户愿意直接打开、信任并付费使用其Robotaxi服务。这标志着其商业模式从B端技术输出向C端出行服务运营延伸，是自动驾驶商业化路径的重要探索。",
       "is_featured": true,
       "companies": [
-        "英伟达",
-        "高通",
-        "地平线",
-        "特斯拉"
+        "Waymo"
       ],
-      "takeaway": "智驾芯片竞争从峰值算力转向能效比与软硬协同，定制化ASIC路线或迎来价值重估，关注具备量产落地能力的国产芯片厂商。",
+      "takeaway": "Waymo从技术输出转向C端出行品牌，意味着Robotaxi竞争正从技术验证进入用户心智与商业化运营的下半场。",
       "has_time": true
     }
   ]
