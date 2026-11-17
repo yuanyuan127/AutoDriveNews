@@ -1,0 +1,27 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "英伟达股价无需黄仁勋强势回归也能走强",
+      "url": "https://www.tmtpost.com/8207692.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "在黄仁勋辞职引发的余波影响下，英伟达股价大幅下跌。但这并不意味着他就该回归。",
+      "publish_ts": 1794841564,
+      "publish_date": "2026-11-16",
+      "fetched_from": "rss",
+      "category": "市场",
+      "importance": 62,
+      "summary": "文章讨论英伟达在黄仁勋辞职传闻引发股价大跌后的走势，认为公司基本面与AI芯片需求仍支撑股价，无需依赖创始人回归。内容偏市场评论，未涉及具体自动驾驶业务进展。",
+      "is_featured": false,
+      "companies": [
+        "英伟达"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
