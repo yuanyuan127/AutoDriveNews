@@ -1,0 +1,27 @@
+{
+  "source_counts": {
+    "钛媒体": 1
+  },
+  "brand_counts": {},
+  "items": [
+    {
+      "title": "英伟达股票很划算，但有一个大问题",
+      "url": "https://www.tmtpost.com/8210477.html",
+      "source_name": "钛媒体",
+      "source_key": "tmtpost",
+      "summary_raw": "英伟达在发布强劲的财报后，股价看起来反而更便宜了，但这家芯片制造商头上仍悬着一项重大风险。",
+      "publish_ts": 1795010602,
+      "publish_date": "2026-11-18",
+      "fetched_from": "rss",
+      "category": "市场",
+      "importance": 62,
+      "summary": "英伟达发布强劲财报后，股价估值反而显得更便宜，但文章指出这家芯片制造商仍面临一项重大风险。内容偏向资本市场与财务视角，涉及英伟达业绩表现与潜在隐忧，未涉及具体自动驾驶技术或产品进展，对自动驾驶行业的直接信息增量有限。",
+      "is_featured": false,
+      "companies": [
+        "英伟达"
+      ],
+      "takeaway": "",
+      "has_time": true
+    }
+  ]
+}
